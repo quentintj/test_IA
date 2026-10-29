@@ -61,6 +61,12 @@ GENERALES = [
 ]
 
 
+def numeros():
+    """Numéro de chaque question dans le PDF, dans l'ordre des pièces."""
+    ordre = [f"{pid}--{iid}" for pid, _, _, items in PIECES for iid, *_ in items]
+    return {cle: n for n, cle in enumerate((c for c in ordre if c in QUESTIONS), start=1)}
+
+
 def main():
     doc = Document()
     s = doc.sections[0]
